@@ -1,1 +1,1 @@
-# finance-news-analysis-bert
+# BERT for Finance News Analysis
