@@ -46,12 +46,17 @@ class FinanceDataset(Dataset):
         super(FinanceDataset).__init__()
         self.path = path
         self.chunk_size = chunk_size
-        self.len = self.count_lines(path)
+        self.len = self.count_lines(path) - 1
 
     def __getitem__(self, index):
-        line = linecache.getline(self.path, index + 1)
+        line = linecache.getline(self.path, index + 2)
         csv_line = next(csv.reader([line], delimiter=','))
-        return csv_line[4], float(csv_line[3])
+        try:
+            return csv_line[4], float(csv_line[3])
+        except:
+            print(csv_line)
+            print(index)
+            raise Exception()
 
     def __len__(self):
         return self.len
