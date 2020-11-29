@@ -1,12 +1,23 @@
 import math
 import numpy as np
-import pandas as pd
-import torch
+import contextlib
 from torch.utils.data import DataLoader, Dataset
 from torch.utils.data.sampler import SubsetRandomSampler
 import linecache
 import csv
 from itertools import takewhile, repeat
+
+TEMP_SEED = 0
+
+
+@contextlib.contextmanager
+def temp_seed(seed):
+    state = np.random.get_state()
+    np.random.seed(seed)
+    try:
+        yield
+    finally:
+        np.random.set_state(state)
 
 
 def load(path, batch_size, ratios):
@@ -20,7 +31,8 @@ def load(path, batch_size, ratios):
 def split(finance_dataset, ratios):
     finance_dataset_len = len(finance_dataset)
     indexes = np.array(range(finance_dataset_len))
-    np.random.shuffle(indexes)
+    with temp_seed(TEMP_SEED):
+        np.random.shuffle(indexes)
 
     train = indexes[:math.ceil(ratios[0] * finance_dataset_len)]
     validation = indexes[

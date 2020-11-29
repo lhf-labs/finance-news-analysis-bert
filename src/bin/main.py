@@ -1,8 +1,10 @@
 import os
 import git
 import time
+import torch
 import logging
 import argparse
+import numpy as np
 from controller.data import load_data
 from controller.model import prepare_device, prepare_preliminary, train_model, test_model
 from model.simple_classifier import SimpleClassifier
@@ -24,6 +26,7 @@ if __name__ == '__main__':
     parser.add_argument('--dropout-rate', help="Dropout that is applied to the model.", type=int, default=0.2)
 
     # Model training parameters
+    parser.add_argument('--seed', help="Seed to be used for randomization purposes.", type=int, default=42)
     parser.add_argument('--batch-size', help="Batch size to feed the model.", type=int, default=32)
     parser.add_argument('--epochs', help="Number of epochs to train the model.", type=int, default=20)
     parser.add_argument('--optimizer', help="Optimizer for training the model.", type=str, choices=['adam'],
@@ -47,6 +50,13 @@ if __name__ == '__main__':
     # Logger
     logging.basicConfig(filename=os.path.join(experiment_directory, 'process.log'), level=logging.INFO)
     logging.getLogger('').addHandler(logging.StreamHandler())
+
+    # Seeds
+    torch.manual_seed(args.seed)
+    if not args.no_cuda:
+        torch.backends.cudnn.deterministic = True
+    # torch.set_deterministic(True)
+    np.random.seed(args.seed)
 
     # Load data
     data_loader_train, data_loader_valid, data_loader_test = load_data(path=args.data_path, batch_size=args.batch_size,
