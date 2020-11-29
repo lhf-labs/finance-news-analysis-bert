@@ -1,6 +1,5 @@
 import torch
 from torch import nn
-import torch.nn.functional as F
 from model.sentence_encoder import sentence_encoder
 
 
@@ -34,8 +33,8 @@ class SimpleClassifier(nn.Module):
     def forward(self, x):
         x = torch.Tensor(self.embedding_model.encode(x)).to(self.device)
         for fc_layer in self.fc:
-            x = F.relu(fc_layer(x))
+            x = torch.relu(fc_layer(x))
             x = self.dropout(x)
 
-        x = F.tanh(self.classifier(x))
-        return x
+        x = torch.tanh(self.classifier(x))
+        return torch.squeeze(x, dim=1)
