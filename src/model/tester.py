@@ -22,4 +22,5 @@ def test(model, device, test_data, criterion):
 
         loss = criterion(outputs, labels)
         loss_test += loss.item()
+    logging.info(f'Test loss: {loss_test:5f}, {loss_test/batch_number:5f}')
     return loss_test/batch_number
