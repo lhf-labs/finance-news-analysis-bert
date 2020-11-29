@@ -17,5 +17,5 @@ def train_model(classifier, device, data_loader_train, data_loader_valid, epochs
           experiment_directory)
 
 
-def test_model(model, device, test_data, criterion):
-    test(model, device, test_data, criterion)
+def test_model(model, device, data_loader_test, criterion):
+    test(model, device, data_loader_test, criterion)

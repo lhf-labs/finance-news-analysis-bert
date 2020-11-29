@@ -74,4 +74,4 @@ if __name__ == '__main__':
     train_model(classifier=classifier, device=device, data_loader_train=data_loader_train, epochs=args.epochs,
                 data_loader_valid=data_loader_valid, criterion=criterion, optimizer=optimizer, patience=args.patience,
                 experiment_directory=experiment_directory)
-    test_model(classifier=classifier, device=device, data_loader_test=data_loader_test, criterion=criterion)
+    test_model(model=classifier, device=device, data_loader_test=data_loader_test, criterion=criterion)
