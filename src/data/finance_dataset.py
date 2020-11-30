@@ -51,12 +51,7 @@ class FinanceDataset(Dataset):
     def __getitem__(self, index):
         line = linecache.getline(self.path, index + 2)
         csv_line = next(csv.reader([line], delimiter=','))
-        try:
-            return csv_line[4], float(csv_line[3])
-        except:
-            print(csv_line)
-            print(index)
-            raise Exception()
+        return csv_line[4], float(csv_line[3])
 
     def __len__(self):
         return self.len
