@@ -44,7 +44,7 @@ def train(model, device, data_train, data_validation, epochs, criterion, optimiz
         logging.info(f'train: average loss = {loss_train/batch_number:.5f}')
         # Get validation loss
         loss_validation = validate(model, device, data_validation, criterion)
-        logging.info(f'validation: average loss = {loss_train:.5f}')
+        logging.info(f'validation: average loss = {loss_validation:.5f}')
 
         torch.save(model.state_dict(), os.path.join(experiment_dir, 'checkpoint_last.pt'))
 
