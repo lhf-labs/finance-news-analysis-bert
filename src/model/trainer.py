@@ -52,6 +52,7 @@ def train(model, device, data_train, data_validation, epochs, criterion, optimiz
         if loss_validation < best_valid_loss:
             torch.save(model.state_dict(), os.path.join(experiment_dir, 'checkpoint_best.pt'))
             patience = 0
+            best_valid_loss = loss_validation
             logging.info(f'train: early stopping patience reset {patience}/{es_patience}')
         else:
             patience += 1
