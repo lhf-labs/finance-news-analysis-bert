@@ -17,7 +17,7 @@ if __name__ == '__main__':
     # Global parameters
     parser.add_argument('data_path', help="Path to data.", type=str)
     parser.add_argument('experiment_path', help="Path to experiment.", type=str)
-    parser.add_argument('--experiment_name', help="Experiment name.", type=str, default='experiment')
+    parser.add_argument('--experiment-name', help="Experiment name.", type=str, default='experiment')
 
     # Model architecture parameters
     parser.add_argument('--number-layers', help="Number of layers of the model.", type=int, default=2)
