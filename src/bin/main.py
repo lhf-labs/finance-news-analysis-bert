@@ -7,7 +7,7 @@ import argparse
 import numpy as np
 from controller.data import load_data
 from controller.model import prepare_device, prepare_preliminary, train_model, test_model
-from model.simple_classifier import SimpleClassifier
+from model.sentence_bert_classifier import SentenceBERTClassifier
 
 """
 Train and test a given model.
@@ -64,9 +64,10 @@ if __name__ == '__main__':
 
     # Build classifier
     device = prepare_device(args.no_cuda)
-    classifier = SimpleClassifier(sentence_model='bert-large-nli-stsb-mean-tokens', device=device, number_layers=args.number_layers,
-                                  layer_size=args.layer_size, minimum_layer_size=args.minimum_layer_size,
-                                  dropout_rate=args.dropout_rate)
+    classifier = SentenceBERTClassifier(sentence_model='bert-large-nli-stsb-mean-tokens', device=device,
+                                        number_layers=args.number_layers,
+                                        layer_size=args.layer_size, minimum_layer_size=args.minimum_layer_size,
+                                        dropout_rate=args.dropout_rate)
     classifier.to(device)
 
     # Train and test

@@ -3,7 +3,7 @@ from torch import nn
 from model.sentence_encoder import sentence_encoder
 
 
-class SimpleClassifier(nn.Module):
+class SentenceBERTClassifier(nn.Module):
     def __init__(self, sentence_model, device, number_layers=2, layer_size=256, minimum_layer_size=8,
                  dropout_rate=0.0):
         super().__init__()

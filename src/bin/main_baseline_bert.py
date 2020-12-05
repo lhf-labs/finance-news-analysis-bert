@@ -7,7 +7,7 @@ import argparse
 import numpy as np
 from controller.data import load_data
 from controller.model import prepare_device, prepare_preliminary, train_model, test_model
-from model.baseline_classifier import BaselineClassifier
+from model.baseline_classifier import BaselineBERTClassifier
 
 """
 Train and test a given model.
@@ -64,9 +64,9 @@ if __name__ == '__main__':
 
     # Build classifier
     device = prepare_device(args.no_cuda)
-    classifier = BaselineClassifier(model='bert-base-uncased', device=device, number_layers=args.number_layers,
-                                    layer_size=args.layer_size, minimum_layer_size=args.minimum_layer_size,
-                                    dropout_rate=args.dropout_rate)
+    classifier = BaselineBERTClassifier(model='bert-base-uncased', device=device, number_layers=args.number_layers,
+                                        layer_size=args.layer_size, minimum_layer_size=args.minimum_layer_size,
+                                        dropout_rate=args.dropout_rate)
     classifier.to(device)
 
     # Train and test

@@ -3,7 +3,7 @@ from torch import nn
 from transformers import BertTokenizer, BertModel
 
 
-class BaselineClassifier(nn.Module):
+class BaselineBERTClassifier(nn.Module):
     def __init__(self, model, device, number_layers=2, layer_size=256, minimum_layer_size=8,
                  dropout_rate=0.0):
         super().__init__()
