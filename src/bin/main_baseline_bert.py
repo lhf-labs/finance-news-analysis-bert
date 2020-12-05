@@ -7,7 +7,7 @@ import argparse
 import numpy as np
 from controller.data import load_data
 from controller.model import prepare_device, prepare_preliminary, train_model, test_model
-from model.baseline_classifier import BaselineBERTClassifier
+from model.baseline_bert_classifier import BaselineBERTClassifier
 
 """
 Train and test a given model.
