@@ -5,10 +5,14 @@ import numpy as np
 from model.validator import validate
 
 
-def train(model, device, data_train, data_validation, epochs, criterion, optimizer, es_patience, experiment_dir):
+def train(model, dataset, device, data_train, data_validation, epochs, criterion, optimizer, es_patience, experiment_dir):
     """
         Train a given model.
     """
+    if dataset == 'finance':
+        es_condition = lambda x, y: x < y
+    else:
+        es_condition = lambda x, y: x > y
     # Set initial parameters
     best_valid_loss = np.Inf
     patience = 0
@@ -24,7 +28,7 @@ def train(model, device, data_train, data_validation, epochs, criterion, optimiz
             batch_number = idx + 1
             logging.info(f'Train {batch_number}/{len(data_train)} batches')
             # Get data
-            texts, labels = data[0], data[1].float().to(device)
+            texts, labels = data[0], data[1].to(device)
 
             # Reset model's gradient
             model.zero_grad()
@@ -43,13 +47,13 @@ def train(model, device, data_train, data_validation, epochs, criterion, optimiz
             loss_train += loss.item()
         logging.info(f'train: average loss = {loss_train/batch_number:.5f}')
         # Get validation loss
-        loss_validation = validate(model, device, data_validation, criterion)
+        loss_validation = validate(model, dataset, device, data_validation, criterion)
         logging.info(f'validation: average loss = {loss_validation:.5f}')
 
         torch.save(model.state_dict(), os.path.join(experiment_dir, 'checkpoint_last.pt'))
 
         # Early stopping criterion
-        if loss_validation < best_valid_loss:
+        if es_condition(loss_validation, best_valid_loss):
             torch.save(model.state_dict(), os.path.join(experiment_dir, 'checkpoint_best.pt'))
             patience = 0
             best_valid_loss = loss_validation

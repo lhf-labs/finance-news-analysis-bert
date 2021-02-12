@@ -1,7 +1,6 @@
 import math
 import numpy as np
 import contextlib
-import torch
 from torch.utils.data import DataLoader, Dataset
 from torch.utils.data.sampler import SubsetRandomSampler
 import linecache
@@ -43,16 +42,18 @@ def split(finance_dataset, ratios):
 
 
 class FinanceDataset(Dataset):
+    class_dict = {"negative": 0, "neutral": 1, "positive": 2}
+
     def __init__(self, path, chunk_size):
         super(FinanceDataset).__init__()
         self.path = path
         self.chunk_size = chunk_size
-        self.len = self.count_lines(path) - 1
+        self.len = self.count_lines(path)
 
     def __getitem__(self, index):
-        line = linecache.getline(self.path, index + 2)
-        csv_line = next(csv.reader([line], delimiter=','))
-        return csv_line[4], torch.tensor(float(csv_line[3])).float()
+        line = linecache.getline(self.path, index + 1)
+        csv_line = next(csv.reader([line], delimiter='@'))
+        return csv_line[0], FinanceDataset.class_dict[csv_line[1]]
 
     def __len__(self):
         return self.len

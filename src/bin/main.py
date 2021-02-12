@@ -17,6 +17,7 @@ if __name__ == '__main__':
     # Global parameters
     parser.add_argument('data_path', help="Path to data.", type=str)
     parser.add_argument('experiment_path', help="Path to experiment.", type=str)
+    parser.add_argument('dataset', help='Dataset to be computed.', type=str, choices=["finance", "phrasebank"])
     parser.add_argument('--experiment-name', help="Experiment name.", type=str, default='experiment')
 
     # Model architecture parameters
@@ -32,8 +33,6 @@ if __name__ == '__main__':
     parser.add_argument('--optimizer', help="Optimizer for training the model.", type=str, choices=['adam'],
                         default='adam')
     parser.add_argument('--lr', help="Learning rate for training the model.", type=float, default=0.001)
-    parser.add_argument('--criterion', help="Loss function for training the model.", type=str, choices=['mse'],
-                        default='mse')
     parser.add_argument('--patience', help="Patience for the Early Stopping.", type=int, default=5)
     parser.add_argument('--ratio', help="Train ratio, rest divided by two for validation and test.", type=float,
                         default=0.995)
@@ -59,12 +58,13 @@ if __name__ == '__main__':
     np.random.seed(args.seed)
 
     # Load data
-    data_loader_train, data_loader_valid, data_loader_test = load_data(path=args.data_path, batch_size=args.batch_size,
-                                                                       ratio=args.ratio)
+    data_loader_train, data_loader_valid, data_loader_test = load_data(dataset=args.dataset, path=args.data_path,
+                                                                       batch_size=args.batch_size, ratio=args.ratio)
 
     # Build classifier
     device = prepare_device(args.no_cuda)
-    classifier = SentenceBERTClassifier(sentence_model='bert-large-nli-stsb-mean-tokens', device=device,
+    classifier = SentenceBERTClassifier(dataset=args.dataset, sentence_model='bert-large-nli-stsb-mean-tokens',
+                                        device=device,
                                         number_layers=args.number_layers,
                                         layer_size=args.layer_size, minimum_layer_size=args.minimum_layer_size,
                                         dropout_rate=args.dropout_rate)
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     # Train and test
     criterion, optimizer = prepare_preliminary(args, classifier)
-    train_model(classifier=classifier, device=device, data_loader_train=data_loader_train, epochs=args.epochs,
-                data_loader_valid=data_loader_valid, criterion=criterion, optimizer=optimizer, patience=args.patience,
-                experiment_directory=experiment_directory)
-    test_model(model=classifier, device=device, data_loader_test=data_loader_test, criterion=criterion)
+    train_model(classifier=classifier, dataset=args.dataset, device=device, data_loader_train=data_loader_train,
+                epochs=args.epochs, data_loader_valid=data_loader_valid, criterion=criterion, optimizer=optimizer,
+                patience=args.patience, experiment_directory=experiment_directory)
+    test_model(model=classifier, dataset=args.dataset, device=device, data_loader_test=data_loader_test, criterion=criterion)

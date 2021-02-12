@@ -10,10 +10,10 @@ def get_device(no_cuda):
 
 
 def prepare(args, model):
-    if args.criterion == 'mse':
+    if args.dataset == 'finance':
         criterion = torch.nn.MSELoss()
     else:
-        raise NotImplementedError("Criterion not implemented")
+        criterion = torch.nn.CrossEntropyLoss()
 
     if args.optimizer == 'adam':
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
