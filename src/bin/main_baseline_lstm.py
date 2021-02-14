@@ -17,6 +17,7 @@ if __name__ == '__main__':
     # Global parameters
     parser.add_argument('data_path', help="Path to data.", type=str)
     parser.add_argument('experiment_path', help="Path to experiment.", type=str)
+    parser.add_argument('dataset', help='Dataset to be computed.', type=str, choices=["finance", "phrasebank"])
     parser.add_argument('--experiment-name', help="Experiment name.", type=str, default='baseline_lstm')
 
     # Model architecture parameters
@@ -64,7 +65,7 @@ if __name__ == '__main__':
 
     # Load data
     data_loader_train, data_loader_valid, data_loader_test = load_data(path=args.data_path, batch_size=args.batch_size,
-                                                                       ratio=args.ratio)
+                                                                       ratio=args.ratio, dataset=args.dataset)
 
     # Build classifier
     device = prepare_device(args.no_cuda)
@@ -77,7 +78,10 @@ if __name__ == '__main__':
 
     # Train and test
     criterion, optimizer = prepare_preliminary(args, classifier)
-    train_model(classifier=classifier, device=device, data_loader_train=data_loader_train, epochs=args.epochs,
+    train_model(classifier=classifier, dataset=args.dataset, device=device, data_loader_train=data_loader_train,
+                epochs=args.epochs,
                 data_loader_valid=data_loader_valid, criterion=criterion, optimizer=optimizer, patience=args.patience,
                 experiment_directory=experiment_directory)
-    test_model(model=classifier, device=device, data_loader_test=data_loader_test, criterion=criterion)
+    classifier.load_state_dict(torch.load(os.path.join(experiment_directory, 'checkpoint_best.pt')))
+    test_model(model=classifier, dataset=args.dataset, device=device, data_loader_test=data_loader_test,
+               criterion=criterion)
