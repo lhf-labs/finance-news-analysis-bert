@@ -8,4 +8,5 @@ if __name__ == '__main__':
     deduped = deduped.drop_duplicates('EVENT_TEXT')
     deduped = deduped.drop_duplicates('HEADLINE')
     deduped = deduped[~deduped['EVENT_SENTIMENT_SCORE'].isna()]
+    deduped = deduped[pd.to_numeric(deduped['EVENT_SENTIMENT_SCORE'], errors='coerce').notnull()]
     deduped.to_csv(f'{FILE_NAME}_deduped.csv', index=False)
