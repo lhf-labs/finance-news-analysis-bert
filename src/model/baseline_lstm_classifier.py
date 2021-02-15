@@ -14,7 +14,7 @@ class BaselineLSTMClassifier(nn.Module):
         self.model = spacy.load('en_core_web_lg')
         self.tokenizer = Tokenizer(self.model.vocab)
         self.vocab_size = vocab_size
-        self.vocab = defaultdict(int)
+        self.vocab = dict()
         self.device = device
         # Embedding
         self.embedding_size = embedding_size
@@ -55,14 +55,14 @@ class BaselineLSTMClassifier(nn.Module):
     def add_encoding(self, x):
         for _x in x:
             for __x in _x:
-                if not self.vocab[__x]:
+                if __x not in self.vocab:
                     if len(self.vocab) < self.vocab_size:
-                        self.vocab[__x] = max(self.vocab.values()) + 1
+                        self.vocab[__x] = max(self.vocab.values() or [0]) + 1
                     else:
                         return
 
     def encode(self, x):
-        return pad_sequence(list(map(lambda _x: torch.tensor(list(map(lambda __x: self.vocab[__x], _x))), x)),
+        return pad_sequence(list(map(lambda _x: torch.tensor(list(map(lambda __x: self.vocab.get(__x, 0), _x))), x)),
                             batch_first=True)
 
     @staticmethod
