@@ -25,7 +25,7 @@ if __name__ == '__main__':
     parser.add_argument('--embedding-size', help="Embedding size of the model.", type=int, default=1024)
     parser.add_argument('--number-rnn-layers', help="Number of RNN layers of the model.", type=int, default=2)
     parser.add_argument('--bidirectional', help="Use bidirectional RNN.", action='store_true')
-    parser.add_argument('--number-layers', help="Number of layers of the model.", type=int, default=2)
+    parser.add_argument('--number-layers', help="Number of layers of the model.", type=int, default=3)
     parser.add_argument('--layer-size', help="Layer start size of the model.", type=int, default=512)
     parser.add_argument('--minimum-layer-size', help="Layer minimum size of the model.", type=int, default=8)
     parser.add_argument('--dropout-rate', help="Dropout that is applied to the model.", type=int, default=0.2)
