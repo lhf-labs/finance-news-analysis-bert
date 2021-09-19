@@ -1,1 +1,143 @@
-python ./baseline_hf.py --model_name_or_path sentence-transformers/bert-base-nli-stsb-mean-tokens --seed 1        --dataset_script_path ../data/hf_dataset.py        --task_name fin --do_train --do_predict        --num_train_epochs 1  --per_device_train_batch_size 8 --max_seq_length 512        --learning_rate 0.00003        --warmup_ratio 0.06 --weight_decay 0.01        --output_dir ../../output/sentence-bert --overwrite_output_dir  --save_strategy steps --save_steps 25000   --logging_dir ../../logs/sentence-bert --logging_strategy steps --logging_steps 500 --gradient_accumulation_steps 4       --cache_dir ../../output/cache --overwrite_cache        --metric_for_best_model loss
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+       --model_name_or_path sentence-transformers/bert-base-nli-stsb-mean-tokens \
+       --seed 1 \
+       --dataset_script_path ../data/hf_dataset_6m.py \
+       --task_name fin \
+       --do_train --do_predict \
+       --num_train_epochs 1 \
+       --per_device_train_batch_size 32 \
+       --max_seq_length 512 \
+       --learning_rate 0.00003 \
+       --warmup_ratio 0.06 \
+       --weight_decay 0.01 \
+       --output_dir ../../output/sentence-bert_6m \
+       --overwrite_output_dir \
+       --save_strategy steps \
+       --save_steps 10000 \
+       --logging_dir ../../logs/sentence-bert_6m \
+       --logging_strategy steps \
+       --logging_steps 500 \
+       --gradient_accumulation_steps 4 \
+       --cache_dir ../../output/cache \
+       --overwrite_cache \
+       --metric_for_best_model loss;
+
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+       --model_name_or_path sentence-transformers/bert-base-nli-stsb-mean-tokens \
+       --seed 1 \
+       --dataset_script_path ../data/hf_dataset_1y.py \
+       --task_name fin \
+       --do_train --do_predict \
+       --num_train_epochs 1 \
+       --per_device_train_batch_size 32 \
+       --max_seq_length 512 \
+       --learning_rate 0.00003 \
+       --warmup_ratio 0.06 \
+       --weight_decay 0.01 \
+       --output_dir ../../output/sentence-bert_1y \
+       --overwrite_output_dir \
+       --save_strategy steps \
+       --save_steps 10000 \
+       --logging_dir ../../logs/sentence-bert_1y \
+       --logging_strategy steps \
+       --logging_steps 500 \
+       --gradient_accumulation_steps 4 \
+       --cache_dir ../../output/cache \
+       --overwrite_cache \
+       --metric_for_best_model loss
+
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+       --model_name_or_path sentence-transformers/bert-base-nli-stsb-mean-tokens \
+       --seed 1 \
+       --dataset_script_path ../data/hf_dataset_2y.py \
+       --task_name fin \
+       --do_train --do_predict \
+       --num_train_epochs 1 \
+       --per_device_train_batch_size 32 \
+       --max_seq_length 512 \
+       --learning_rate 0.00003 \
+       --warmup_ratio 0.06 \
+       --weight_decay 0.01 \
+       --output_dir ../../output/sentence-bert_2y \
+       --overwrite_output_dir \
+       --save_strategy steps \
+       --save_steps 10000 \
+       --logging_dir ../../logs/sentence-bert_2y \
+       --logging_strategy steps \
+       --logging_steps 500 \
+       --gradient_accumulation_steps 4 \
+       --cache_dir ../../output/cache \
+       --overwrite_cache \
+       --metric_for_best_model loss
+
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+       --model_name_or_path ProsusAI/finbert \
+       --seed 1 \
+       --dataset_script_path ../data/hf_dataset_6m.py \
+       --task_name fin \
+       --do_train --do_predict \
+       --num_train_epochs 1 \
+       --per_device_train_batch_size 32 \
+       --max_seq_length 512 \
+       --learning_rate 0.00003 \
+       --warmup_ratio 0.06 \
+       --weight_decay 0.01 \
+       --output_dir ../../output/sentence-bert_6m \
+       --overwrite_output_dir \
+       --save_strategy steps \
+       --save_steps 10000 \
+       --logging_dir ../../logs/sentence-bert_6m \
+       --logging_strategy steps \
+       --logging_steps 500 \
+       --gradient_accumulation_steps 4 \
+       --cache_dir ../../output/cache \
+       --overwrite_cache \
+       --metric_for_best_model loss;
+
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+       --model_name_or_path ProsusAI/finbert \
+       --seed 1 \
+       --dataset_script_path ../data/hf_dataset_1y.py \
+       --task_name fin \
+       --do_train --do_predict \
+       --num_train_epochs 1 \
+       --per_device_train_batch_size 32 \
+       --max_seq_length 512 \
+       --learning_rate 0.00003 \
+       --warmup_ratio 0.06 \
+       --weight_decay 0.01 \
+       --output_dir ../../output/sentence-bert_1y \
+       --overwrite_output_dir \
+       --save_strategy steps \
+       --save_steps 10000 \
+       --logging_dir ../../logs/sentence-bert_1y \
+       --logging_strategy steps \
+       --logging_steps 500 \
+       --gradient_accumulation_steps 4 \
+       --cache_dir ../../output/cache \
+       --overwrite_cache \
+       --metric_for_best_model loss
+
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+       --model_name_or_path ProsusAI/finbert \
+       --seed 1 \
+       --dataset_script_path ../data/hf_dataset_2y.py \
+       --task_name fin \
+       --do_train --do_predict \
+       --num_train_epochs 1 \
+       --per_device_train_batch_size 32 \
+       --max_seq_length 512 \
+       --learning_rate 0.00003 \
+       --warmup_ratio 0.06 \
+       --weight_decay 0.01 \
+       --output_dir ../../output/sentence-bert_2y \
+       --overwrite_output_dir \
+       --save_strategy steps \
+       --save_steps 10000 \
+       --logging_dir ../../logs/sentence-bert_2y \
+       --logging_strategy steps \
+       --logging_steps 500 \
+       --gradient_accumulation_steps 4 \
+       --cache_dir ../../output/cache \
+       --overwrite_cache \
+       --metric_for_best_model loss

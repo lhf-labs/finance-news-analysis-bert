@@ -12,10 +12,8 @@ _DESCRIPTION = """
 _HOMEPAGE = """None"""
 
 _URL = "../../data/"
-#_TRAINING_FILE = "2019-02-11to2021-02-11_deduped.csv"
-#_TRAINING_FILE = "2020-02-11to2021-02-11_deduped.csv"
-_TRAINING_FILE = "2020-08-11to2021-02-11_deduped.csv"
-#_DEV_FILE = "valid.tsv"
+
+_TRAINING_FILE = "2020-02-11to2021-02-11_deduped.csv"
 _TEST_FILE = "2021-02-12to2021-02-26_deduped.csv"
 
 
