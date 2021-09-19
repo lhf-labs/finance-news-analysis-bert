@@ -5,7 +5,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --task_name fin \
        --do_train --do_predict \
        --num_train_epochs 1 \
-       --per_device_train_batch_size 32 \
+       --per_device_train_batch_size 8 \
        --max_seq_length 512 \
        --learning_rate 0.00003 \
        --warmup_ratio 0.06 \
@@ -29,7 +29,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --task_name fin \
        --do_train --do_predict \
        --num_train_epochs 1 \
-       --per_device_train_batch_size 32 \
+       --per_device_train_batch_size 8 \
        --max_seq_length 512 \
        --learning_rate 0.00003 \
        --warmup_ratio 0.06 \
@@ -53,7 +53,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --task_name fin \
        --do_train --do_predict \
        --num_train_epochs 1 \
-       --per_device_train_batch_size 32 \
+       --per_device_train_batch_size 8 \
        --max_seq_length 512 \
        --learning_rate 0.00003 \
        --warmup_ratio 0.06 \
@@ -77,7 +77,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --task_name fin \
        --do_train --do_predict \
        --num_train_epochs 1 \
-       --per_device_train_batch_size 32 \
+       --per_device_train_batch_size 8 \
        --max_seq_length 512 \
        --learning_rate 0.00003 \
        --warmup_ratio 0.06 \
@@ -101,7 +101,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --task_name fin \
        --do_train --do_predict \
        --num_train_epochs 1 \
-       --per_device_train_batch_size 32 \
+       --per_device_train_batch_size 8 \
        --max_seq_length 512 \
        --learning_rate 0.00003 \
        --warmup_ratio 0.06 \
@@ -125,7 +125,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --task_name fin \
        --do_train --do_predict \
        --num_train_epochs 1 \
-       --per_device_train_batch_size 32 \
+       --per_device_train_batch_size 8 \
        --max_seq_length 512 \
        --learning_rate 0.00003 \
        --warmup_ratio 0.06 \
