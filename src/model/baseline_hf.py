@@ -432,7 +432,7 @@ def main():
     elif data_args.task_name == 'pol':
         metric = load_metric('accuracy')
     elif data_args.task_name == 'fin':
-        metric = load_metric("glue", 'stsb')
+        metric = None
     elif data_args.task_name is not None:
         metric = load_metric("/gpfs/projects/bsc88/projects/bne/eval_cte/metrics/glue.py", data_args.task_name)
     # TODO: When datasets metrics include regular accuracy, make an else here and remove special branch from
@@ -443,13 +443,14 @@ def main():
     def compute_metrics(p: EvalPrediction):
         preds = p.predictions[0] if isinstance(p.predictions, tuple) else p.predictions
         preds = np.squeeze(preds) if is_regression else np.argmax(preds, axis=1)
-        if data_args.task_name is not None:
+        if is_regression:
+            return {"mse": ((preds - p.label_ids) ** 2).mean().item()}
+        elif data_args.task_name is not None:
             result = metric.compute(predictions=preds, references=p.label_ids)
             if len(result) > 1:
                 result["combined_score"] = np.mean(list(result.values())).item()
             return result
-        elif is_regression:
-            return {"mse": ((preds - p.label_ids) ** 2).mean().item()}
+
         else:
             return {"accuracy": (preds == p.label_ids).astype(np.float32).mean().item()}
 

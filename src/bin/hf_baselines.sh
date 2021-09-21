@@ -20,7 +20,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model loss;
+       --metric_for_best_model mse;
 
 CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --model_name_or_path sentence-transformers/bert-base-nli-stsb-mean-tokens \
@@ -44,7 +44,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model loss
+       --metric_for_best_model mse;
 
 CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --model_name_or_path sentence-transformers/bert-base-nli-stsb-mean-tokens \
@@ -68,7 +68,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model loss
+       --metric_for_best_model mse;
 
 CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --model_name_or_path ProsusAI/finbert \
@@ -92,7 +92,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model loss;
+       --metric_for_best_model mse;;
 
 CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --model_name_or_path ProsusAI/finbert \
@@ -116,7 +116,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model loss
+       --metric_for_best_model mse;
 
 CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --model_name_or_path ProsusAI/finbert \
@@ -140,4 +140,4 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model loss
+       --metric_for_best_model mse;
