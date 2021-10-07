@@ -70,7 +70,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --overwrite_cache \
        --metric_for_best_model mse;
 
-CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf_finbert.py \
        --model_name_or_path ProsusAI/finbert \
        --seed 1 \
        --dataset_script_path ../data/hf_dataset_6m.py \
@@ -92,9 +92,9 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --gradient_accumulation_steps 4 \
        --cache_dir ../../output/cache \
        --overwrite_cache \
-       --metric_for_best_model mse;;
+       --metric_for_best_model mse;
 
-CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf_finbert.py \
        --model_name_or_path ProsusAI/finbert \
        --seed 1 \
        --dataset_script_path ../data/hf_dataset_1y.py \
@@ -118,7 +118,7 @@ CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
        --overwrite_cache \
        --metric_for_best_model mse;
 
-CUDA_VISIBLE_DEVICES=0 python ./baseline_hf.py \
+CUDA_VISIBLE_DEVICES=0 python ./baseline_hf_finbert.py \
        --model_name_or_path ProsusAI/finbert \
        --seed 1 \
        --dataset_script_path ../data/hf_dataset_2y.py \
