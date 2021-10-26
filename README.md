@@ -1,4 +1,4 @@
-# FinEAS: Financial Embedding Analysis of Sentiment
+# FinEAS: Financial Embedding Analysis of Sentiment 📈
 (SentenceBERT for Financial News Sentiment Regression)
 
 This repository contains the code for generating three models for Finance News Sentiment Analysis.
@@ -10,7 +10,11 @@ The models implemented are:
 - FinBERT from HuggingFace.
 - SentenceBERT from HuggingFace
 
-## Results
+## Models 🤖
+- FinEAS: https://huggingface.co/LHF/FinEAS
+- FinBERT: https://huggingface.co/LHF/finbert-regressor
+
+## Results ✅
 We used three partitions of the datasets from the February 11th, 2021. 6 months previous to that date,
 1 year previous to that date and 2 years previous to the date mentioned.
 
@@ -37,12 +41,12 @@ The table below shows the results for the HuggingFace models
 | 24 months | 0.0033 | 0.0040  |
 
 
-## Citing
+## Citing 📣
 ```
 TBA
 ```
 
-## License
+## License 🤝
 MIT License.
 
 Copyright 2021 Asier Gutiérrez-Fandiño & Jordi Armengol-Estapé.
