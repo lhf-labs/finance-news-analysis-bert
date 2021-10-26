@@ -1,10 +1,14 @@
-# BERT for Finance News Analysis
+# FinEAS: Financial Embedding Analysis of Sentiment
+(SentenceBERT for Financial News Sentiment Regression)
+
 This repository contains the code for generating three models for Finance News Sentiment Analysis.
 
-The three models implemented are:
+The models implemented are:
 - A SentenceBERT with simple classifier.
 - A BERT with simple classifier.
 - A simple Bi-directional Long-Short Term Memory (LSTM) network.
+- FinBERT from HuggingFace.
+- SentenceBERT from HuggingFace
 
 ## Results
 We used three partitions of the datasets from the February 11th, 2021. 6 months previous to that date,
@@ -15,7 +19,7 @@ to February 26th, 2021.
 
 The table below shows the results:
 
-|                          | SentenceBERT | BERT   | BiLSTM |
+|                          | FinEAS | BERT   | BiLSTM |
 |--------------------------|--------------|--------|--------|
 | 6 months                 |   **0.0556** | 0.2124 | 0.2108 |
 | 6 months<br>Next 2 weeks |   **0.1061** | 0.2190 | 0.2194 |
@@ -23,6 +27,15 @@ The table below shows the results:
 | 1 year<br>Next 2 weeks   |   **0.1058** | 0.2191 | 0.2194 |
 | 2 years                  |   **0.0671** | 0.2087 | 0.2086 |
 | 2 years<br>Next 2 weeks  |   **0.1065** | 0.2188 | 0.2185 |
+
+
+The table below shows the results for the HuggingFace models
+| Dates     | FinEAS | FinBERT |
+|-----------|--------|---------|
+| 6 months  | 0.0044 | 0.0050  |
+| 12 months | 0.0036 | 0.0034  |
+| 24 months | 0.0033 | 0.0040  |
+
 
 ## Citing
 ```
