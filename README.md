@@ -43,7 +43,14 @@ The table below shows the results for the HuggingFace models
 
 ## Citing 📣
 ```
-TBA
+@misc{gutierrezfandino2021fineas,
+      title={FinEAS: Financial Embedding Analysis of Sentiment}, 
+      author={Asier Gutiérrez-Fandiño and Miquel Noguer i Alonso and Petter Kolm and Jordi Armengol-Estapé},
+      year={2021},
+      eprint={2111.00526},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
 
 ## License 🤝
