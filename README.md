@@ -11,8 +11,8 @@ The models implemented are:
 - SentenceBERT from HuggingFace
 
 ## Models 🤖
-- FinEAS: https://huggingface.co/LHF/FinEAS
-- FinBERT: https://huggingface.co/LHF/finbert-regressor
+- FinEAS: https://huggingface.co/LHF/FinEAS *(not available)*
+- FinBERT: https://huggingface.co/LHF/finbert-regressor *(not available)*
 
 ## Results ✅
 We used three partitions of the datasets from the February 11th, 2021. 6 months previous to that date,
